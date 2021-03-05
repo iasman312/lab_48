@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{#{% block menu %}#}
+{#    <li><a href="{% url "article-add" %}">Создать статью</a></li>#}
+{#    <li><a href="{% url "article-update" article.id %}">Редактировать статью</a></li>#}
+{#    <li><a href="{% url "article-delete" article.id %}">Удалить статью</a></li>#}
+{#{% endblock menu %}#}
+
+{% block page_header %}Товар {{ product.id }}{% endblock page_header %}
+
+{% block content %}
+    <p>Название товара: {{ product.name }}</p>
+    <p>Описание товара: {{ product.description }}</p>
+    <p>Категория: {{ product.category }}</p>
+    <p>Остаток: {{ product.balance }}</p>
+    <p>Цена: {{ product.price }}</p>
+
+{% endblock content %}

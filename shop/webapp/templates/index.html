@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
-{% block menu %}<li><a href="{% url "product-add" %}">Создать товар</a></li
->{% endblock menu %}
+{#{% block menu %}<li><a href="{% url "product-add" %}">Создать товар</a></li#}
+{#>{% endblock menu %}#}
 
 {% block title %}Все товары{% endblock title %}
 
@@ -13,7 +13,8 @@
     {% endif %}
 
     {% for product in products %}
-        <p>{{ article.name }}: <a href="{% url "product-view" product.id %}"
-        >{{ product.price }}</a></p>
+        <p>{{ product.get_category_display }}: <a href=
+                                                         "{% url "product-view" product.id %}"
+        >{{ product.name }}</a></p>
     {% endfor %}
 {% endblock content %}
