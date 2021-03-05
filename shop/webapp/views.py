@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
 from webapp.models import Product
+from .forms import ProductForm
 
 
 def index_view(request):
@@ -11,3 +12,21 @@ def index_view(request):
 def product_view(request, pk):
     product = get_object_or_404(Product, id=pk)
     return render(request, 'product_view.html', context={'product': product})
+
+
+def product_create_view(request):
+    if request.method == "GET":
+        form = ProductForm()
+        return render(request, 'product_create.html', context={'form': form})
+    elif request.method == "POST":
+        form = ProductForm(data=request.POST)
+        if form.is_valid():
+            article = Product.objects.create(
+                name=form.cleaned_data.get('name'),
+                description=form.cleaned_data.get('description'),
+                category=form.cleaned_data.get('category'),
+                balance=form.cleaned_data.get('balance'),
+                price=form.cleaned_data.get('price')
+            )
+            return redirect('product-view', pk=article.id)
+        return render(request, 'product_create.html', context={'form': form})
