@@ -11,7 +11,7 @@
 {% block content %}
     <p>Название товара: {{ product.name }}</p>
     <p>Описание товара: {{ product.description }}</p>
-    <p>Категория: {{ product.category }}</p>
+    <p>Категория: {{ product.get_category_display }}</p>
     <p>Остаток: {{ product.balance }}</p>
     <p>Цена: {{ product.price }}</p>
 

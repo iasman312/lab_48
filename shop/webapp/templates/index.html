@@ -13,8 +13,10 @@
     {% endif %}
 
     {% for product in products %}
+        {% if product.balance >= 1 %}
         <p>{{ product.get_category_display }}: <a href=
                                                          "{% url "product-view" product.id %}"
-        >{{ product.name }}</a></p>
+        >{{ product.name }}</a>, {{ product.price }}</p>
+        {% endif %}
     {% endfor %}
 {% endblock content %}
