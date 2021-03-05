@@ -1,0 +1,75 @@
+[
+{
+  "model": "webapp.product",
+  "pk": 1,
+  "fields": {
+    "name": "Samsung Galaxy J3",
+    "description": "Он оборудован 5-дюймовым HD-дисплеем на основе PLS-матрицы, достаточно производительной системой-на-чипе собственного производства и 13 Мп фотокамерой, способной записывать FullHD-видео, что в сегменте недорогих смартфонов встречается редко, и то зачастую среди «китайцев», которые пока ещё могут демпинговать.",
+    "category": "smartphone",
+    "balance": 5,
+    "price": "7000.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 2,
+  "fields": {
+    "name": "Canon EOS M50",
+    "description": "Sony сделала ряд интересных шагов с аппаратами серии NEX, а затем их наследницами Alpha aXXXX, но вскоре переключилась на полнокадровые камеры, а линейку оптики для сенсоров APS-C и байонета Sony E, похоже, забросила. Fujifilm уверенно лидирует в классе «кропнутых» камер и продолжает радовать не только регулярными обновлениями аппаратов с байонетом Fujifilm X, но и выпуском новой оптики для них, каковая, к слову сказать, стала главным конкурентным преимуществом этого производителя.",
+    "category": "camera",
+    "balance": 10,
+    "price": "50000.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 3,
+  "fields": {
+    "name": "Acer Nitro 5",
+    "description": "Это классический игровой ноутбук средней ценовой категории. В его активе сбалансированная начинка из центрального процессора Intel Core i5-7300HQ и видеокарты NVIDIA GeForce GTX 1050 Ti, приемлемые внешние габариты и вес, эффективная система охлаждения.",
+    "category": "laptop",
+    "balance": 7,
+    "price": "70000.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 4,
+  "fields": {
+    "name": "iPhone 11",
+    "description": "Прямой преемник iPhone XR и самый доступный из представленных в сентябре смартфонов Apple. Он уступает iPhone 11 Pro по ряду характеристик (о них расскажем позже), зато стоит на 30 тысяч дешевле.",
+    "category": "smartphone",
+    "balance": 15,
+    "price": "70000.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 5,
+  "fields": {
+    "name": "Мышь проводная SVEN RX-30 USB",
+    "description": "Оптическая, черный",
+    "category": "other",
+    "balance": 30,
+    "price": "200.00"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$CFmMgYDKguEO$wmOrVP1qqHz5nVQxN8aTkynpPGL9H2ZxLf2Lzd1xWR8=",
+    "last_login": "2021-03-05T11:36:11.777Z",
+    "is_superuser": true,
+    "username": "asman",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-03-05T11:35:43.837Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
