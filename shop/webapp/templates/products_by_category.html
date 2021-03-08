@@ -13,7 +13,7 @@
         <p><input type="submit" value="Найти"></p>
     </form>
 
-    {% if not products %}
+    {% if not products_by_category %}
         <h2>НЕТ ТОВАРОВ</h2>
     {% endif %}
 
@@ -21,9 +21,9 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Product name</th>
-          <th scope="col">Price</th>
-          <th scope="col">Category</th>
+          <th scope="col">Название товара</th>
+          <th scope="col">Цена</th>
+          <th scope="col">Категория</th>
         </tr>
       </thead>
       {% for product in products_by_category %}

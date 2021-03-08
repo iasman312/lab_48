@@ -15,8 +15,8 @@ class ProductForm(forms.Form):
                                   'товара')
     category = forms.ChoiceField(required=True, choices=category_choices,
                                  initial='other', label='Категория')
-    balance = forms.IntegerField(min_value=0)
-    price = forms.DecimalField(max_digits=7, decimal_places=2)
+    balance = forms.IntegerField(min_value=0, label='Остаток')
+    price = forms.DecimalField(max_digits=7, decimal_places=2, label='Цена')
 
 
 class SearchForm(forms.Form):

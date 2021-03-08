@@ -6,6 +6,7 @@ from .forms import ProductForm, SearchForm
 
 def index_view(request):
     form = SearchForm()
+    name = None
     if request.GET.get('name'):
         products = Product.objects.all().order_by('category', 'name').exclude(
             balance=0).filter(name__startswith=request.GET.get('name'))
@@ -16,7 +17,8 @@ def index_view(request):
         balance=0)
     return render(request, 'index.html', context={'products': products,
                                                   'choices': category_choices,
-                                                  'form': form})
+                                                  'form': form,
+                                                  'name': name})
 
 
 def product_view(request, pk):

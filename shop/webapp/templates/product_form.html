@@ -10,6 +10,5 @@
        <p class="form-error">{{ error }}</p>
    {% endfor %}
    <p {% if field.errors %} class="form-field-error"{% endif %}>{{ field }}</p>
-    <br>
 {% endfor %}
 <p><input type="submit" value="{{ button_text }}"></p>
