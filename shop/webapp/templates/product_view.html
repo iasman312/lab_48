@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 
-{#{% block menu %}#}
-{#    <li><a href="{% url "article-add" %}">Создать статью</a></li>#}
-{#    <li><a href="{% url "article-update" article.id %}">Редактировать статью</a></li>#}
-{#    <li><a href="{% url "article-delete" article.id %}">Удалить статью</a></li>#}
-{#{% endblock menu %}#}
+{% block menu %}
+    <li><a href="{% url "product-add" %}">Создать товар</a></li>
+    <li><a href="{% url "product-update" product.id %}">Редактировать
+        товар</a></li>
+    <li><a href="{% url "product-delete" product.id %}">Удалить товар</a></li>
+{% endblock menu %}
 
 {% block page_header %}Товар {{ product.id }}{% endblock page_header %}
 

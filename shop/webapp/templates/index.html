@@ -1,22 +1,29 @@
 {% extends 'base.html' %}
 
-{#{% block menu %}<li><a href="{% url "product-add" %}">Создать товар</a></li#}
-{#>{% endblock menu %}#}
+{% block menu %}<li><a href="{% url "product-add" %}">Создать товар</a></li
+>{% endblock menu %}
 
 {% block title %}Все товары{% endblock title %}
+
 
 {% block page_header %}Все товары{% endblock page_header %}
 
 {% block content %}
+    <form action="{% url "product-list" %}" method="get">
+        <p><label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label></p>
+        <p>{{ form.name }}</p>
+        <br>
+        <p><input type="submit" value="Найти"></p>
+    </form>
+
+
     {% if not products %}
         <h2>НЕТ ТОВАРОВ</h2>
     {% endif %}
 
     {% for product in products %}
-        {% if product.balance >= 1 %}
         <p>{{ product.get_category_display }}: <a href=
                                                          "{% url "product-view" product.id %}"
         >{{ product.name }}</a>, {{ product.price }}</p>
-        {% endif %}
     {% endfor %}
 {% endblock content %}

@@ -1,12 +1,20 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
 from webapp.models import Product
-from .forms import ProductForm
+from .forms import ProductForm, SearchForm
 
 
 def index_view(request):
-    products = Product.objects.all().order_by('category', 'name')
-    return render(request, 'index.html', context={'products': products})
+    form = SearchForm()
+    if request.GET.get('name'):
+        products = Product.objects.all().order_by('category', 'name').exclude(
+            balance=0).filter(name__startswith=request.GET.get('name'))
+        return render(request, 'index.html', context={'products': products,
+                                                      'form': form})
+    products = Product.objects.all().order_by('category', 'name').exclude(
+        balance=0)
+    return render(request, 'index.html', context={'products': products,
+                                                  'form': form})
 
 
 def product_view(request, pk):
@@ -37,9 +45,11 @@ def product_update_view(request, pk):
 
     if request.method == 'GET':
         form = ProductForm(initial={
-            'title': product.title,
-            'content': product.content,
-            'author': product.author
+            'name': product.name,
+            'description': product.description,
+            'category': product.category,
+            'balance': product.balance,
+            'price': product.price
         })
         return render(request, 'product_update.html', context={'form': form,
                                                                'product':
@@ -49,10 +59,10 @@ def product_update_view(request, pk):
         form = ProductForm(
             data=request.POST)
         if form.is_valid():
-            product.name = form.cleaned_data.get('name'),
-            product.description = form.cleaned_data.get('description'),
-            product.category = form.cleaned_data.get('category'),
-            product.balance = form.cleaned_data.get('balance'),
+            product.name = form.cleaned_data.get('name')
+            product.description = form.cleaned_data.get('description')
+            product.category = form.cleaned_data.get('category')
+            product.balance = form.cleaned_data.get('balance')
             product.price = form.cleaned_data.get('price')
             product.save()
             return redirect('product-view',
@@ -60,3 +70,14 @@ def product_update_view(request, pk):
 
         return render(request, 'product_create.html',
                       context={'form': form, 'product': product})
+
+
+def product_delete_view(request, pk):
+    product = get_object_or_404(Product, id=pk)  # получаем статью
+
+    if request.method == 'GET':
+        return render(request, 'product_delete.html', context={'product':
+                                                               product})
+    elif request.method == 'POST':
+        product.delete()
+        return redirect('product-list')

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Подтвердите удаление товара{% endblock %}
+{% block page_header %}Вы уверены, что хотите удалить товар
+    {{ product.name }}?{% endblock page_header %}
+
+{% block content%}
+    <form action="{% url "product-delete" product.id %}", method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Да, я хочу удалить товар">
+        <a href="{% url "product-view" product.id %}">Отмена. Код красный. КОД
+            КРАСНЫЙ!!</a>
+    </form>
+{% endblock content %}
