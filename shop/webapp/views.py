@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
-from webapp.models import Product
+from webapp.models import Product, category_choices
 from .forms import ProductForm, SearchForm
 
 
@@ -10,10 +10,12 @@ def index_view(request):
         products = Product.objects.all().order_by('category', 'name').exclude(
             balance=0).filter(name__startswith=request.GET.get('name'))
         return render(request, 'index.html', context={'products': products,
+                                                      'choices': category_choices,
                                                       'form': form})
     products = Product.objects.all().order_by('category', 'name').exclude(
         balance=0)
     return render(request, 'index.html', context={'products': products,
+                                                  'choices': category_choices,
                                                   'form': form})
 
 
@@ -84,7 +86,17 @@ def product_delete_view(request, pk):
 
 
 def product_category_view(request, selected_category):
-    products_by_category = Product.objects.all().filter(
+    form = SearchForm()
+    if request.GET.get('name'):
+        products = Product.objects.all().order_by('name').exclude(
+            balance=0).filter(name__startswith=request.GET.get('name'))
+        return render(request, 'products_by_category.html',
+                      context={'products': products, 'form': form})
+    products_by_category = Product.objects.all().order_by('name').filter(
         category=selected_category)
-    return render(request, 'index.html',
-                  context={'products': products_by_category})
+    product_filter = Product.objects.all().filter(category=selected_category)
+    product = product_filter[0]
+    return render(request, 'products_by_category.html',
+                  context={'products': products_by_category,
+                           'selected_category': selected_category,
+                           'product': product})

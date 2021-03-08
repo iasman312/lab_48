@@ -10,10 +10,15 @@
 {% block page_header %}Товар {{ product.id }}{% endblock page_header %}
 
 {% block content %}
-    <p>Название товара: {{ product.name }}</p>
-    <p>Описание товара: {{ product.description }}</p>
-    <p>Категория: {{ product.get_category_display }}</p>
-    <p>Остаток: {{ product.balance }}</p>
-    <p>Цена: {{ product.price }}</p>
-
+    <div class="card" style="width: 700px">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ product.price }}</h6>
+        <p class="card-text">{{ product.description }}</p>
+        <a href="{% url "product-category" product.category %}"
+           class="card-link">
+            {{ product.get_category_display }}
+        </a>
+      </div>
+    </div>
 {% endblock content %}
