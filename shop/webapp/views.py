@@ -81,3 +81,10 @@ def product_delete_view(request, pk):
     elif request.method == 'POST':
         product.delete()
         return redirect('product-list')
+
+
+def product_category_view(request, selected_category):
+    products_by_category = Product.objects.all().filter(
+        category=selected_category)
+    return render(request, 'index.html',
+                  context={'products': products_by_category})
