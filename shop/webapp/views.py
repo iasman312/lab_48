@@ -87,16 +87,20 @@ def product_delete_view(request, pk):
 
 def product_category_view(request, selected_category):
     form = SearchForm()
-    if request.GET.get('name'):
-        products = Product.objects.all().order_by('name').exclude(
-            balance=0).filter(name__startswith=request.GET.get('name'))
-        return render(request, 'products_by_category.html',
-                      context={'products': products, 'form': form})
     products_by_category = Product.objects.all().order_by('name').filter(
         category=selected_category)
     product_filter = Product.objects.all().filter(category=selected_category)
     product = product_filter[0]
+    if request.GET.get('name'):
+        products_by_category = products_by_category.order_by('name').exclude(
+            balance=0).filter(name__startswith=request.GET.get('name'))
+        return render(request, 'products_by_category.html',
+                      context={'products_by_category': products_by_category,
+                               'selected_category': selected_category,
+                               'product': product,
+                               'form': form})
     return render(request, 'products_by_category.html',
-                  context={'products': products_by_category,
+                  context={'products_by_category': products_by_category,
                            'selected_category': selected_category,
-                           'product': product})
+                           'product': product,
+                           'form': form})
