@@ -38,3 +38,16 @@ class Category(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+
+class Cart(models.Model):
+    product = models.ForeignKey('webapp.Category', related_name='cart',
+                                 verbose_name='Корзина',
+                                 on_delete=models.PROTECT)
+    quantity = models.IntegerField(verbose_name='Количество')
+
+    class Meta:
+        db_table = 'carts'
+        verbose_name = 'Корзина'
+        verbose_name = 'Корзины'
+

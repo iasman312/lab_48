@@ -101,13 +101,6 @@ class CreateProductView(CreateView):
     model = Product
     success_url = reverse_lazy('product-list')
 
-    def form_valid(self, form):
-        product = Product()
-        for key, value in form.cleaned_data.items():
-            setattr(product, key, value)
-        product.save()
-        return super().form_valid(form)
-
 
 class ProductUpdateView(UpdateView):
     form_class = ProductForm
