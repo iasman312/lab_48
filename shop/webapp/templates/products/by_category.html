@@ -7,9 +7,10 @@
 {% block page_header %}{{ product.get_category_display }}{% endblock page_header %}
 
 {% block content %}
-    <form action="{% url "product-category" selected_category %}" method="get">
-        <p><label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label></p>
-        <p>{{ form.name }}</p>
+    <form action="" method="get">
+        <p><label for="{{ form.search_value.id_for_label }}">
+            {{form.search_value.label }}</label></p>
+        <p>{{ form.search_value }}</p>
         <p><input type="submit" value="Найти"></p>
     </form>
 

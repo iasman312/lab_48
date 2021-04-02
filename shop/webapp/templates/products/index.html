@@ -9,14 +9,10 @@
 {% block page_header %}Все товары{% endblock page_header %}
 
 {% block content %}
-    <form action="{% url "product-list" %}" method="get">
-        <p><label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label></p>
-        <p>{{ form.name }}</p>
-        <p><input type="submit" value="Найти"></p>
-    </form>
-
     {% if not products %}
         <h2>НЕТ ТОВАРОВ</h2>
+    {% else %}
+        {% include "partial/search_form.html" %}
     {% endif %}
 
     <table class="table">
@@ -35,17 +31,18 @@
               <td><a href="{% url "product-view" product.id %}">{{ product.name }}</a></td>
               <td>{{ product.price }}</td>
               <td><a href="{% url "product-category" product.category %}"
-              >{{ product.get_category_display }}</a></td>
+              >{{ product.category }}</a></td>
             </tr>
           </tbody>
       {% endfor %}
     </table>
     <br>
+    {% include 'partial/paginate.html' %}
     <ul class="list-group">
       <li class="list-group-item active">Категории</li>
-        {% for choice in choices %}
-            <a href="{% url "product-category" choice.0 %}">
-                <li class="list-group-item">{{ choice.1 }}</li>
+        {% for category in categories %}
+            <a href="{% url "product-category" category %}">
+                <li class="list-group-item">{{ category }}</li>
             </a>
         {% endfor %}
     </ul>
