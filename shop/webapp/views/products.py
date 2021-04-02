@@ -63,7 +63,7 @@ class ProductByCategory(ListView):
     def get(self, request, **kwargs):
         self.form = SearchForm(request.GET)
         self.search_data = self.get_search_data()
-        return super(ProductByCategory, self).get(request, **kwargs)
+        return super().get(request, **kwargs)
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -73,7 +73,9 @@ class ProductByCategory(ListView):
                 Q(name__icontains=self.search_data) |
                 Q(description__icontains=self.search_data)
             )
-        return queryset.exclude(balance=0).filter(category=self.kwargs.get('selected_category'))
+        return queryset.exclude(balance=0).filter(
+            category__name=self.kwargs.get(
+            'selected_category'))
 
     def get_search_data(self):
         if self.form.is_valid():

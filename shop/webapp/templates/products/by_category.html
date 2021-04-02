@@ -25,6 +25,8 @@
           <th scope="col">Название товара</th>
           <th scope="col">Цена</th>
           <th scope="col">Категория</th>
+          <th scope="col">Действие</th>
+
         </tr>
       </thead>
       {% for product in products_by_category %}
@@ -34,6 +36,10 @@
               <td><a href="{% url "product-view" product.id %}">{{ product.name }}</a></td>
               <td>{{ product.price }}</td>
               <td>{{ product.get_category_display }}</td>
+              <td><a href="{% url "product-in-cart" product.id %}" class="btn
+              btn-primary btn-lg active"
+                     role="button" aria-pressed="true">Добавить в корзину</a>
+</td>
             </tr>
           </tbody>
       {% endfor %}

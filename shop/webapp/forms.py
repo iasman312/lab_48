@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import widgets
-from webapp.models import Product
+from webapp.models import Product, Order
 
 
 class ProductForm(forms.ModelForm):
@@ -16,3 +16,9 @@ class ProductForm(forms.ModelForm):
 class SearchForm(forms.Form):
     search_value = forms.CharField(max_length=100, required=False, label='Найти '
                                                                     'товар')
+
+
+class OrderForm(forms.Form):
+    class Meta:
+        model = Order
+        fields = ('user_name', 'tel_number', 'address')

@@ -41,7 +41,7 @@ class Category(models.Model):
 
 
 class Cart(models.Model):
-    product = models.ForeignKey('webapp.Category', related_name='cart',
+    product = models.ForeignKey('webapp.Product', related_name='cart',
                                  verbose_name='Корзина',
                                  on_delete=models.PROTECT)
     quantity = models.IntegerField(verbose_name='Количество')
@@ -50,4 +50,18 @@ class Cart(models.Model):
         db_table = 'carts'
         verbose_name = 'Корзина'
         verbose_name = 'Корзины'
+
+
+class Order(models.Model):
+    products = models.ManyToManyField('webapp.Product', related_name='orders',
+                                      verbose_name='Товар',
+                                      db_table='orders_products')
+    user_name = models.CharField(max_length=120, null=False, blank=False,
+                                 verbose_name="Имя пользователя")
+    tel_number = models.CharField(max_length=100, null=False, blank=False,
+                                  verbose_name="Номер телефона")
+    address = models.CharField(max_length=150, null=False, blank=False,
+                               verbose_name="Адрес")
+    created_at = models.DateTimeField(auto_now_add=True)
+
 

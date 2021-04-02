@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block menu %}<li><a href="{% url "product-add" %}">Создать товар</a></li
+>{% endblock menu %}
+
+{% block title %}Все товары{% endblock title %}
+
+
+{% block page_header %}Все товары{% endblock page_header %}
+
+{% block content %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Название товара</th>
+          <th scope="col">Цена</th>
+          <th scope="col">Количество</th>
+          <th scope="col">Сумма</th>
+          <th scope="col">Действие</th>
+        </tr>
+      </thead>
+      {% for item in cart_items %}
+          <tbody>
+            <tr>
+              <th scope="row">{{ forloop.counter }}</th>
+              <td><a href="{% url "product-view" item.product.id %}">{{ item.product.name }}</a></td>
+              <td>${{ item.product.price }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>${% widthratio item.quantity 1 item.product.price %}</td>
+              <td><a href="{% url "cart-delete" item.id %}" class="btn
+              btn-primary
+              btn-lg active"
+                     role="button" aria-pressed="true">Удалить товар</a>
+</td>
+            </tr>
+          </tbody>
+      {% endfor %}
+    </table>
+    <p>Итого: ${{ total }}</p>
+{% endblock content %}
