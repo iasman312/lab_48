@@ -3,63 +3,202 @@
   "model": "webapp.product",
   "pk": 1,
   "fields": {
-    "name": "Samsung Galaxy J3",
-    "description": "Он оборудован 5-дюймовым HD-дисплеем на основе PLS-матрицы, достаточно производительной системой-на-чипе собственного производства и 13 Мп фотокамерой, способной записывать FullHD-видео, что в сегменте недорогих смартфонов встречается редко, и то зачастую среди «китайцев», которые пока ещё могут демпинговать.",
-    "category": "smartphone",
-    "balance": 5,
-    "price": "7000.00"
+    "name": "Dell Latitude 14.1\" Light Gaming & Business Laptop",
+    "description": "Balancing performance and mobility, the Dell Latitude E5440 is an excellent portable workstation and light gaming laptop. Light gaming such as Minecraft and CoD capable. Ask AAA PCs for additional game details before purchasing!",
+    "category": 2,
+    "balance": 2,
+    "price": "310.00"
   }
 },
 {
   "model": "webapp.product",
   "pk": 2,
   "fields": {
-    "name": "Canon EOS M50",
-    "description": "Sony сделала ряд интересных шагов с аппаратами серии NEX, а затем их наследницами Alpha aXXXX, но вскоре переключилась на полнокадровые камеры, а линейку оптики для сенсоров APS-C и байонета Sony E, похоже, забросила. Fujifilm уверенно лидирует в классе «кропнутых» камер и продолжает радовать не только регулярными обновлениями аппаратов с байонетом Fujifilm X, но и выпуском новой оптики для них, каковая, к слову сказать, стала главным конкурентным преимуществом этого производителя.",
-    "category": "camera",
-    "balance": 10,
-    "price": "50000.00"
+    "name": "MACBOOK PRO 13 (2012 Year Model)",
+    "description": "LAPTOP IS FULLY TESTED AND 100% FUNCTIONAL, CLEANED, AND READY TO USE! Laptop is in good condition (Grade B). These models came from business environment and are certified by our technicians. BUY WITH CONFIDENCE!",
+    "category": 2,
+    "balance": 9,
+    "price": "610.00"
   }
 },
 {
   "model": "webapp.product",
   "pk": 3,
   "fields": {
-    "name": "Acer Nitro 5",
-    "description": "Это классический игровой ноутбук средней ценовой категории. В его активе сбалансированная начинка из центрального процессора Intel Core i5-7300HQ и видеокарты NVIDIA GeForce GTX 1050 Ti, приемлемые внешние габариты и вес, эффективная система охлаждения.",
-    "category": "laptop",
-    "balance": 7,
-    "price": "70000.00"
+    "name": "ASUS TUF FX705DY 17.3",
+    "description": "Laptop is in excellent overall condition with little to no marking. Boxed in its original box with genuine accessories.",
+    "category": 2,
+    "balance": 1,
+    "price": "650.00"
   }
 },
 {
   "model": "webapp.product",
   "pk": 4,
   "fields": {
-    "name": "iPhone 11",
-    "description": "Прямой преемник iPhone XR и самый доступный из представленных в сентябре смартфонов Apple. Он уступает iPhone 11 Pro по ряду характеристик (о них расскажем позже), зато стоит на 30 тысяч дешевле.",
-    "category": "smartphone",
-    "balance": 15,
-    "price": "70000.00"
+    "name": "Acer Chromebook 11.6",
+    "description": "Item is in great working condition. Operating system is setup like new and ready to go. May show cosmetic signs of use that do not affect the functionality of item.",
+    "category": 2,
+    "balance": 7,
+    "price": "225.00"
   }
 },
 {
   "model": "webapp.product",
   "pk": 5,
   "fields": {
-    "name": "Мышь проводная SVEN RX-30 USB",
-    "description": "Оптическая, черный",
-    "category": "other",
-    "balance": 30,
-    "price": "200.00"
+    "name": "Apple iPhone 8 64GB GSM Factory Unlocked Smartphone",
+    "description": "This is a B+ Stock item, meaning unit is in good cosmetic condition and may have moderate signs of scrapes or scratches - Fully Functional – Comes with charging usb and adapter. - This item is GSM Unlocked will work worldwide (Compatible for GSM Carriers)",
+    "category": 1,
+    "balance": 22,
+    "price": "155.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 6,
+  "fields": {
+    "name": "Nokia Lumia 550 Black Windows 10 Wifi 4G 3G GPS Unlocked Smartphone - 8GB",
+    "description": "Good",
+    "category": 1,
+    "balance": 0,
+    "price": "50.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 7,
+  "fields": {
+    "name": "Samsung Galaxy Note GT-N7000 16GB White (Unlocked) Smartphone 8.0mp WiFi gps",
+    "description": "The item was used, and been restored to 100% functional condition, new apperance",
+    "category": 1,
+    "balance": 0,
+    "price": "55.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 8,
+  "fields": {
+    "name": "\"MINT\" Nikon D7000 16.2MP Digital SLR Camera Black Body from Japan",
+    "description": "Thank you for reading.Product ratings are determined after testing.TOTAL \"MINT\".Beautiful appearance.Optics are beautiful.These items work perfectly.The items shown in the pictures are included.All items work and work as you wish.Works as you would and you can enjoy your photos.See seller's selling details for completeness or imperfections.",
+    "category": 3,
+    "balance": 12,
+    "price": "280.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 9,
+  "fields": {
+    "name": "CONTAX ST 35mm SLR Film Camera Black Body Works well From Japan",
+    "description": "Thank you for reading.Product ratings are determined after testing.TOTAL \"VERY GOOD\"Exterior has some scuffs from normal use.There is an unnoticeable dent on the top of the body.It does not affect the function.The battery compartment has some corrosion marks.It does not affect the energization.All items work and work as you want.Work as you wish and enjoy your photos.See seller's selling details for completeness or incompleteness.",
+    "category": 3,
+    "balance": 6,
+    "price": "190.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 10,
+  "fields": {
+    "name": "Natural ALoe Gel Face Cream Moisturizer Whitening Skin Acne Treatment Skin Care",
+    "description": "Good",
+    "category": 4,
+    "balance": 13,
+    "price": "10.00"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 1,
+  "fields": {
+    "name": "Смартфон"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 2,
+  "fields": {
+    "name": "Ноутбук"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 3,
+  "fields": {
+    "name": "Камера"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 4,
+  "fields": {
+    "name": "Разное"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 2,
+  "fields": {
+    "user_name": "Asman",
+    "tel_number": "05551242151",
+    "address": "5 mkr",
+    "created_at": "2021-04-05T08:51:16.086Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 3,
+  "fields": {
+    "user_name": "faefae",
+    "tel_number": "wqrq",
+    "address": "wqfqfqf",
+    "created_at": "2021-04-05T08:57:18.813Z"
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 3,
+  "fields": {
+    "product": 5,
+    "order": 2,
+    "quantity": 19
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 4,
+  "fields": {
+    "product": 1,
+    "order": 3,
+    "quantity": 2
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 5,
+  "fields": {
+    "product": 4,
+    "order": 3,
+    "quantity": 1
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 6,
+  "fields": {
+    "product": 7,
+    "order": 3,
+    "quantity": 3
   }
 },
 {
   "model": "auth.user",
   "pk": 1,
   "fields": {
-    "password": "pbkdf2_sha256$216000$CFmMgYDKguEO$wmOrVP1qqHz5nVQxN8aTkynpPGL9H2ZxLf2Lzd1xWR8=",
-    "last_login": "2021-03-05T11:36:11.777Z",
+    "password": "pbkdf2_sha256$216000$eCDlhQuQ73cy$0KmUxBtwR6XwdgmomTKl5yV+z/sdGSxtP9iDUyQGYWs=",
+    "last_login": "2021-04-02T08:48:57.510Z",
     "is_superuser": true,
     "username": "asman",
     "first_name": "",
@@ -67,7 +206,7 @@
     "email": "",
     "is_staff": true,
     "is_active": true,
-    "date_joined": "2021-03-05T11:35:43.837Z",
+    "date_joined": "2021-04-02T08:48:50.389Z",
     "groups": [],
     "user_permissions": []
   }
