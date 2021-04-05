@@ -18,7 +18,7 @@ class SearchForm(forms.Form):
                                                                     'товар')
 
 
-class OrderForm(forms.Form):
+class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = ('user_name', 'tel_number', 'address')

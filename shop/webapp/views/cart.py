@@ -11,8 +11,8 @@ from django.db.models import Q
 from django.utils.http import urlencode
 from django.views.generic.base import View
 
-from webapp.models import Product, Category, Cart
-from webapp.forms import ProductForm, SearchForm
+from webapp.models import Product, Category, Cart, Order
+from webapp.forms import ProductForm, SearchForm, OrderForm
 
 
 class ProductToCart(View):
@@ -34,18 +34,24 @@ class ProductToCart(View):
         return redirect('product-list')
 
 
-class CartView(ListView):
+class CartView(CreateView):
     template_name = 'cart/index.html'
-    model = Cart
-    context_object_name = 'cart_items'
+    model = Order
+    form_class = OrderForm
+    success_url = reverse_lazy('product-list')
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
         total = 0
         for i in Cart.objects.all():
             total += i.product.price * i.quantity
-        context['total'] = total
-        return context
+        kwargs['total'] = total
+        kwargs['cart_items'] = Cart.objects.all()
+        print(kwargs)
+        return super().get_context_data(**kwargs)
+
+    def form_valid(self, form):
+
+        return super().form_valid(form)
 
 
 class CartDeleteView(DeleteView):
@@ -53,7 +59,10 @@ class CartDeleteView(DeleteView):
     success_url = reverse_lazy('cart-view')
 
     def get(self, request, *args, **kwargs):
-        return self.post(request, *args, **kwargs)
+        product = Product.objects.get(pk=kwargs.get('pk'))
+        product.balance += 1
+        product.save()
+        return self.delete(request, *args, **kwargs)
 
 
 

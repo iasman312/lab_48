@@ -49,13 +49,10 @@ class Cart(models.Model):
     class Meta:
         db_table = 'carts'
         verbose_name = 'Корзина'
-        verbose_name = 'Корзины'
+        verbose_name_plural = 'Корзины'
 
 
 class Order(models.Model):
-    products = models.ManyToManyField('webapp.Product', related_name='orders',
-                                      verbose_name='Товар',
-                                      db_table='orders_products')
     user_name = models.CharField(max_length=120, null=False, blank=False,
                                  verbose_name="Имя пользователя")
     tel_number = models.CharField(max_length=100, null=False, blank=False,
@@ -63,5 +60,23 @@ class Order(models.Model):
     address = models.CharField(max_length=150, null=False, blank=False,
                                verbose_name="Адрес")
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'orders'
+        verbose_name = 'Заказ'
+        verbose_name_plural = 'Заказы'
+
+
+class ProductOrder(models.Model):
+    product = models.ForeignKey('webapp.Product',
+                                related_name='product_orders',
+                                on_delete=models.CASCADE, verbose_name='Товар')
+    order = models.ForeignKey('webapp.Order', related_name='order_products',
+                              on_delete=models.CASCADE, verbose_name='Заказ')
+    quantity = models.IntegerField(blank=False, null=False,
+                                   verbose_name='Количество')
+
+    def __str__(self):
+        return "{} | {}".format(self.product, self.order)
 
 
