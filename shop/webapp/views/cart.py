@@ -18,18 +18,21 @@ from webapp.forms import ProductForm, SearchForm, OrderForm
 class ProductToCart(View):
     def get(self, request, pk):
         product = Product.objects.get(pk=pk)
+        qty = int(request.GET.get('quantity'))
         if product.balance < 1:
             return redirect('product-list')
         try:
             cart = Cart.objects.get(product__pk=pk)
-            cart.quantity += 1
-            product.balance -= 1
-            cart.save()
-            product.save()
+            if qty <= product.balance:
+                cart.quantity += qty
+                product.balance -= qty
+                cart.save()
+                product.save()
         except:
-            Cart.objects.create(product=product, quantity=1)
-            product.balance -= 1
-            product.save()
+            if qty <= product.balance:
+                Cart.objects.create(product=product, quantity=qty)
+                product.balance -= qty
+                product.save()
 
         return redirect('product-list')
 
@@ -54,16 +57,19 @@ class CartView(CreateView):
         return super().form_valid(form)
 
 
-class CartDeleteView(DeleteView):
-    model = Cart
-    success_url = reverse_lazy('cart-view')
-
+class CartDeleteView(View):
     def get(self, request, *args, **kwargs):
         cart = Cart.objects.get(pk=kwargs.get('pk'))
         product = Product.objects.get(pk=cart.product.pk)
+        if cart.quantity == 1:
+            cart.delete()
+        else:
+            cart.quantity -= 1
+            cart.save()
         product.balance += 1
         product.save()
-        return self.delete(request, *args, **kwargs)
+
+        return redirect('cart-view')
 
 
 

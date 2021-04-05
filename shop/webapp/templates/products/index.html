@@ -37,10 +37,14 @@
               <td>${{ product.price }}</td>
               <td><a href="{% url "product-category" product.category %}"
               >{{ product.category }}</a></td>
-              <td><a href="{% url "product-in-cart" product.id %}" class="btn
-              btn-primary btn-lg active"
-                     role="button" aria-pressed="true">Добавить в корзину</a>
-</td>
+              <td>
+                  <form action="{% url "product-in-cart" product.id %} "
+                        method="get">
+                      {% csrf_token %}
+                      <input type="number" name="quantity" min="1" max="9">
+                      <input type="submit" value="Добавить в корзину">
+                  </form>
+              </td>
             </tr>
           </tbody>
       {% endfor %}
