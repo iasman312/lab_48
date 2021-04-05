@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category, Cart, Order
+from .models import Product, Category, Cart, Order, ProductOrder
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -15,7 +15,13 @@ class OrderAdmin(admin.ModelAdmin):
     ordering = ('-created_at',)
 
 
+class ProductOrderAdmin(admin.ModelAdmin):
+    list_display = ['id', 'product', 'order', 'quantity']
+
+
+
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category)
 admin.site.register(Cart)
 admin.site.register(Order, OrderAdmin)
+admin.site.register(ProductOrder, ProductOrderAdmin)
