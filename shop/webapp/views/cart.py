@@ -59,7 +59,8 @@ class CartDeleteView(DeleteView):
     success_url = reverse_lazy('cart-view')
 
     def get(self, request, *args, **kwargs):
-        product = Product.objects.get(pk=kwargs.get('pk'))
+        cart = Cart.objects.get(pk=kwargs.get('pk'))
+        product = Product.objects.get(pk=cart.product.pk)
         product.balance += 1
         product.save()
         return self.delete(request, *args, **kwargs)

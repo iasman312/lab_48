@@ -38,4 +38,7 @@
       {% endfor %}
     </table>
     <p>Итого: ${{ total }}</p>
+    <form action="{% url "cart-order" %}" method="post">
+        {% include "partial/form.html" with button_text="Заказать" %}
+    </form>
 {% endblock content %}
