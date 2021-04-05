@@ -10,7 +10,12 @@ class ProductAdmin(admin.ModelAdmin):
     readonly_fields = ['id']
 
 
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ['id', 'user_name', 'tel_number', 'created_at']
+    ordering = ('-created_at',)
+
+
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category)
 admin.site.register(Cart)
-admin.site.register(Order)
+admin.site.register(Order, OrderAdmin)

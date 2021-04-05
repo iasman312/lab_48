@@ -5,6 +5,7 @@
     <li><a href="{% url "product-update" product.id %}">Редактировать
         товар</a></li>
     <li><a href="{% url "product-delete" product.id %}">Удалить товар</a></li>
+    <li><a href="{% url "cart-view" %}">Корзина</a></li>
 {% endblock menu %}
 
 {% block page_header %}Товар {{ product.id }}{% endblock page_header %}
@@ -20,6 +21,13 @@
            class="card-link">
             {{ product.get_category_display }}
         </a>
+        <form action="{% url "product-in-cart" product.id %} "
+                        method="get">
+              {% csrf_token %}
+              <input type="number" name="quantity" min="1" max="99">
+              <input type="submit" class="btn btn-primary btn-sm"
+                     value="Добавить в корзину">
+        </form>
       </div>
     </div>
 {% endblock content %}

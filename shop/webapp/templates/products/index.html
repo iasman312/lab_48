@@ -41,8 +41,9 @@
                   <form action="{% url "product-in-cart" product.id %} "
                         method="get">
                       {% csrf_token %}
-                      <input type="number" name="quantity" min="1" max="9">
-                      <input type="submit" value="Добавить в корзину">
+                      <input type="number" name="quantity" min="1" max="99">
+                      <input type="submit" class="btn btn-primary btn-sm"
+                             value="Добавить в корзину">
                   </form>
               </td>
             </tr>

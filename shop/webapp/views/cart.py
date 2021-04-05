@@ -5,6 +5,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
+from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.shortcuts import render, redirect
 from django.db.models import Q
@@ -33,8 +34,7 @@ class ProductToCart(View):
                 Cart.objects.create(product=product, quantity=qty)
                 product.balance -= qty
                 product.save()
-
-        return redirect('product-list')
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
 class CartView(CreateView):
@@ -68,7 +68,6 @@ class CartDeleteView(View):
             cart.save()
         product.balance += 1
         product.save()
-
         return redirect('cart-view')
 
 
