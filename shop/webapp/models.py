@@ -58,6 +58,8 @@ class Order(models.Model):
     address = models.CharField(max_length=150, null=False, blank=False,
                                verbose_name="Адрес")
     created_at = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(get_user_model(), related_name='orders',
+                             on_delete=models.CASCADE, verbose_name='Пользователь', blank=True, null=True)
 
     class Meta:
         db_table = 'orders'
@@ -76,9 +78,6 @@ class ProductOrder(models.Model):
                               on_delete=models.CASCADE, verbose_name='Заказ')
     quantity = models.IntegerField(blank=False, null=False,
                                    verbose_name='Количество')
-    user = models.ForeignKey(get_user_model(), related_name='orders',
-                                on_delete=models.CASCADE, verbose_name='Пользователь', blank=True, null=True, default=1)
-
     def __str__(self):
         return "{} | {}".format(self.product, self.order)
 

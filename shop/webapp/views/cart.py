@@ -1,19 +1,13 @@
 from django.views.generic import (
-    ListView,
-    CreateView,
-    DetailView,
-    UpdateView,
-    DeleteView
+    CreateView
 )
 from django.http import HttpResponseRedirect
-from django.urls import reverse, reverse_lazy
-from django.shortcuts import render, redirect
-from django.db.models import Q
-from django.utils.http import urlencode
+from django.urls import reverse_lazy
+from django.shortcuts import redirect
 from django.views.generic.base import View
 
-from webapp.models import Product, Category, Cart, Order
-from webapp.forms import ProductForm, SearchForm, OrderForm
+from webapp.models import Product, Cart, Order
+from webapp.forms import OrderForm
 
 
 class ProductToCart(View):
@@ -47,7 +41,8 @@ class CartView(CreateView):
     success_url = reverse_lazy('product-list')
 
     def get_context_data(self, **kwargs):
-        my_dict = self.request.session.get('my_dict', {})
+        my_dict = self.request.session.get('my_dict', [])
+        print(my_dict)
         total = 0
         for i in my_dict:
             cart = Cart.objects.get(pk=i)
