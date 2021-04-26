@@ -1,8 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
-
-# category_choices = [('smartphone', 'Смартфон'), ('laptop', 'Ноутбук'),
-#                     ('camera', 'Камера'), ('other', '')]
+from django.contrib.auth import get_user_model
 
 
 class Product(models.Model):
@@ -78,6 +76,8 @@ class ProductOrder(models.Model):
                               on_delete=models.CASCADE, verbose_name='Заказ')
     quantity = models.IntegerField(blank=False, null=False,
                                    verbose_name='Количество')
+    user = models.ForeignKey(get_user_model(), related_name='orders',
+                                on_delete=models.CASCADE, verbose_name='Пользователь', blank=True, null=True, default=1)
 
     def __str__(self):
         return "{} | {}".format(self.product, self.order)
