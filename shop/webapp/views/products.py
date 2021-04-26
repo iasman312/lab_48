@@ -11,6 +11,8 @@ from django.utils.http import urlencode
 
 from webapp.models import Product, Category
 from webapp.forms import ProductForm, SearchForm
+from django.contrib.auth.mixins import PermissionRequiredMixin
+
 
 
 class IndexView(ListView):
@@ -97,27 +99,30 @@ class ProductView(DetailView):
     template_name = 'products/view.html'
 
 
-class CreateProductView(CreateView):
+class CreateProductView(PermissionRequiredMixin, CreateView):
     template_name = 'products/create.html'
     form_class = ProductForm
     model = Product
     success_url = reverse_lazy('product-list')
+    permission_required = 'webapp.add_product'
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(PermissionRequiredMixin, UpdateView):
     form_class = ProductForm
     model = Product
     template_name = 'products/update.html'
     context_object_name = 'product'
+    permission_required = 'webapp.change_product'
 
     def get_success_url(self):
         return reverse('product-view', kwargs={'pk': self.kwargs.get('pk')})
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(PermissionRequiredMixin, DeleteView):
     model = Product
     template_name = 'products/delete.html'
     context_object_name = 'product'
     success_url = reverse_lazy('product-list')
+    permission_required = 'webapp.delete_product'
 
 

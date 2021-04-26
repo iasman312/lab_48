@@ -9,7 +9,7 @@ def register_view(request, *args, **kwargs):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('index')
+            return redirect('product-list')
     else:
         form = MyUserCreationForm()
     return render(request, 'user_create.html', context={'form': form})

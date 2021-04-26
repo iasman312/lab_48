@@ -28,6 +28,7 @@
     <div class="container">
         <h1>{% block page_header %}Лучшие товары в мире!
             {% endblock page_header %}</h1>
+        {% include "partial/messages.html" %}
         {% block content %}{% endblock content %}
     </div>
 
