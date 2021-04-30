@@ -42,14 +42,12 @@ class CartView(CreateView):
 
     def get_context_data(self, **kwargs):
         my_dict = self.request.session.get('my_dict', [])
-        print(my_dict)
         total = 0
         for i in my_dict:
             cart = Cart.objects.get(pk=i)
             total += cart.product.price * cart.quantity
         kwargs['total'] = total
         kwargs['cart_items'] = Cart.objects.filter(pk__in=my_dict)
-        print(kwargs)
         return super().get_context_data(**kwargs)
 
     def form_valid(self, form):

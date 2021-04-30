@@ -2,11 +2,15 @@
 {% block content %}
     <p>Пользователь: {{ user }}</p>
     {% for order in orders %}
-        {% for order_product in order.order_products.all %}
-            <p>Товар: {{ order_product.product.name }}</p>
-            <p>Количество: {{ order_product.quantity }}</p>
-            <p>Цена: {{ order_product.product.price }}</p>
-            <br>
-        {% endfor %}
+        <div class="order">
+            {% for order_product in order.order_products.all %}
+                <p>Товар: {{ order_product.product.name }}</p>
+                <p>Количество: {{ order_product.quantity }}</p>
+                <p>Цена: ${{ order_product.product.price }}</p>
+                <p>Сумма: ${% widthratio order_product.quantity 1 order_product.product.price %}</p>
+                <p>------------------</p>
+            {% endfor %}
+            <p>Общая сумма: ${{ order.get_total }}</p>
+        </div>
     {% endfor %}
 {% endblock %}

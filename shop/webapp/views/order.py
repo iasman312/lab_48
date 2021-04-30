@@ -33,8 +33,16 @@ class OrderListView(ListView):
     model = Order
     context_object_name = 'orders'
 
+    def get_context_data(self, **kwargs):
+        orders = Order.objects.filter(user__pk=self.request.user.pk)
+        total = 0
+        for order in orders:
+            for order_product in order.order_products.all():
+                total += order_product.product.price * order_product.quantity
+        kwargs['total'] = total
+        return super().get_context_data(**kwargs)
+
     def get_queryset(self):
         queryset = super().get_queryset()
-        print(queryset)
         queryset = queryset.filter(user__pk=self.request.user.pk)
         return queryset

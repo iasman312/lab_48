@@ -52,3 +52,9 @@ body {
     text-align: center;
     border: solid 1px gray;
 }
+
+.order{
+    border: 2px solid #6a7dff;
+    padding: 10px;
+    margin-bottom: 10px;
+}
