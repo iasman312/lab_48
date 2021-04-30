@@ -8,6 +8,7 @@ from django.views.generic.base import View
 
 from webapp.models import Product, Cart, Order
 from webapp.forms import OrderForm
+from django.contrib import messages
 
 
 class ProductToCart(View):
@@ -24,13 +25,25 @@ class ProductToCart(View):
                 cart.save()
                 product.balance -= qty
                 product.save()
+                message_content = f'Добавили "{product.name}" {qty} штуки!'
+                messages.success(self.request, message_content)
+            else:
+                message_content = f'Не смогли добавить "{product.name}"'
+                messages.error(self.request, message_content)
         except:
             if qty <= product.balance:
                 cart = Cart.objects.create(product=product, quantity=qty)
                 my_dict.append(cart.pk)
                 product.balance -= qty
                 product.save()
+                message_content = f'Добавили "{product.name}" {qty} штуки!'
+                messages.success(self.request, message_content)
+            else:
+                message_content = f'Не смогли добавить "{product.name}"'
+                messages.error(self.request, message_content)
+
         request.session['my_dict'] = my_dict
+
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
@@ -68,6 +81,8 @@ class CartDeleteView(View):
         product.balance += 1
         product.save()
         request.session['my_dict'] = my_dict
+        message_content = f'Удалили "{product.name}" 1 штуку!'
+        messages.success(self.request, message_content)
         return redirect('cart-view')
 
 
