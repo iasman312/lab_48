@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.views.generic.base import View
 
+from webapp.mixins import HitsMixin
 from webapp.models import Product, Cart, Order
 from webapp.forms import OrderForm
 from django.contrib import messages
@@ -47,7 +48,7 @@ class ProductToCart(View):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
-class CartView(CreateView):
+class CartView(HitsMixin, CreateView):
     template_name = 'cart/index.html'
     model = Order
     form_class = OrderForm
