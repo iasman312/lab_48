@@ -11,7 +11,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user_name', 'tel_number', 'created_at']
+    list_display = ['id', 'tel_number', 'created_at']
     ordering = ('-created_at',)
 
 

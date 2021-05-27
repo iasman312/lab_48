@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # Custom apps
     'webapp',
     'accounts',
+    'api_v1',
 
     # Lib apps
     'rest_framework',
